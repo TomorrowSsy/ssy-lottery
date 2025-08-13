@@ -1,5 +1,9 @@
 package lottery.infrastructure.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,11 +12,15 @@ import java.util.Date;
  * @version 1.0
  * @date 2025/8/6
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StrategyDetail {
     private String id;
     private Long strategyId;
     private String awardId;
     private String awardCount;
+    private String awardDesc;
     private BigDecimal awardRate;
     private String createTime;
     private String updateTime;

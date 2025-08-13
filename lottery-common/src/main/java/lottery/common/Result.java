@@ -1,5 +1,8 @@
 package lottery.common;
 
+import lombok.Data;
+import lombok.Getter;
+
 import java.io.Serializable;
 
 /**
@@ -7,10 +10,11 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2025/7/22
  */
+@Data
 public class Result implements Serializable {
     private static final long serialVersionUID = -3826891916021780628L;
 
-    private String code ;
+    private String code;
     private String info;
 
 
@@ -31,19 +35,5 @@ public class Result implements Serializable {
         return new Result(Constants.ResponseCode.UN_ERROR.getCode(), Constants.ResponseCode.UN_ERROR.getInfo());
     }
 
-    public String getCode() {
-        return code;
-    }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
 }

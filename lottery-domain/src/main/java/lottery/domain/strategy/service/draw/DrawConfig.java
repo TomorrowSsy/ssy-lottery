@@ -1,8 +1,7 @@
 package lottery.domain.strategy.service.draw;
 
+import lottery.common.Constants;
 import lottery.domain.strategy.service.algorithm.IDrawAlgorithm;
-import lottery.domain.strategy.service.algorithm.impl.DefaultRateRandomDrawAlgorithm;
-import org.apache.ibatis.annotations.Result;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -17,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DrawConfig {
 
     @Resource
-    private IDrawAlgorithm defaultRateRandomDrawAlgorithm;
+    private IDrawAlgorithm entiretyRateRandomDrawAlgorithm;
 
     @Resource
     private IDrawAlgorithm singleRateRandomDrawAlgorithm;
@@ -26,8 +25,8 @@ public class DrawConfig {
 
     @PostConstruct
     public void initial() {
-        drawAlgorithmMap.put(1, defaultRateRandomDrawAlgorithm);
-        drawAlgorithmMap.put(2, singleRateRandomDrawAlgorithm);
+        drawAlgorithmMap.put(Constants.StrategyMode.SINGLE.getCode(), singleRateRandomDrawAlgorithm);
+        drawAlgorithmMap.put(Constants.StrategyMode.ENTIRETY.getCode(), entiretyRateRandomDrawAlgorithm);
     }
 
 }

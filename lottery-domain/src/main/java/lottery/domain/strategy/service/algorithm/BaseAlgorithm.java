@@ -1,6 +1,7 @@
 package lottery.domain.strategy.service.algorithm;
 
 import java.math.BigDecimal;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,5 +64,14 @@ public abstract class BaseAlgorithm implements IDrawAlgorithm{
     @Override
     public Boolean isExistRateTuple(Long strategyId) {
         return rateTupleMap.containsKey(strategyId);
+    }
+
+    /**
+     * 生成随机抽奖码，1~100
+     * @param bound
+     * @return
+     */
+    protected int generateSecureRandomIntCode(int bound) {
+        return new SecureRandom().nextInt(bound) + 1;
     }
 }

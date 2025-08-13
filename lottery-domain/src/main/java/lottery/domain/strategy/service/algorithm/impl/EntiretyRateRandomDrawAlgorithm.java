@@ -12,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 必中奖策略，排除已经无库存的奖品
  * @author 沈时宇
  * @version 1.0
  * @date 2025/8/6
  */
-@Component("defaultRateRandomDrawAlgorithm")
-public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
+@Component
+public class EntiretyRateRandomDrawAlgorithm extends BaseAlgorithm {
     @Override
     public String randomDraw(Long strategyId, List<String> excludeAwardsIds) {
         BigDecimal differenceDenominator =  BigDecimal.ZERO;
@@ -39,7 +40,7 @@ public class DefaultRateRandomDrawAlgorithm extends BaseAlgorithm {
             return "未中奖";
         }
 
-        int randomVal = new SecureRandom().nextInt(100) + 1;
+        int randomVal = this.generateSecureRandomIntCode(100);
         int cursor = 0;
         for (AwardRateInfo awardRateInfo: differenceAwardsIds) {
             int rate = awardRateInfo.getAwardRate().divide(differenceDenominator, 2, RoundingMode.UP).multiply(new BigDecimal(100)).intValue();
