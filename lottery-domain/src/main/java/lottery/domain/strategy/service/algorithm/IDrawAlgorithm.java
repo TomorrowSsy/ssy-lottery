@@ -41,7 +41,7 @@ public interface IDrawAlgorithm {
     Boolean isExistRateTuple(Long strategyId);
 
     /**
-     * 使用secureRandom随机数，索引到对应的奖品信息返回
+     * 抽奖到对应的奖品信息返回
      * @param strategyId 策略id
      * @param excludeAwardsIds 排除不能作为奖品的id，留给风控和空库存使用
      * @return 中奖结果

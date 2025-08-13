@@ -1,5 +1,6 @@
 package lottery.domain.strategy.service.algorithm.impl;
 
+import com.sun.deploy.ui.AboutDialog;
 import lottery.domain.strategy.service.algorithm.BaseAlgorithm;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @version 1.0
  * @date 2025/8/6
  */
-@Component("singleRateRandomDrawAlgorithm")
+@Component
 public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
 
     @Override
@@ -23,7 +24,7 @@ public class SingleRateRandomDrawAlgorithm extends BaseAlgorithm {
         }
 
         // 0~100随机数
-        int randomVal = new SecureRandom().nextInt(100) + 1;
+        int randomVal = this.generateSecureRandomIntCode(100);
         int idx = super.hashIdx(randomVal);
 
         // 获取中奖信息并返回
